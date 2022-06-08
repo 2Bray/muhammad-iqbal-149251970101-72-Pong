@@ -10,21 +10,15 @@ public class BallController : MonoBehaviour
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        rig.velocity = startVelocity();
+        startVelocity();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private Vector2 startVelocity()
+    public void startVelocity()
     {
         //Mengacak arah bola
         float dirX = Random.Range(0, 2) == 1 ? 6f : -6f;
-        float dirY = Random.Range(-5f,5f);
+        float dirY = Random.Range(-5f, 5f);
 
-        return new Vector2(dirX,dirY);
+        rig.velocity = new Vector2(dirX, dirY);
     }
 }
