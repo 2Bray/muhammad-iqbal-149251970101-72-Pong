@@ -15,23 +15,10 @@ public class BallController : MonoBehaviour
         speed = OptionStaticScript.GetBallSpeed();
 
         rig = GetComponent<Rigidbody2D>();
-<<<<<<< Updated upstream
-        rig.velocity = startVelocity();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private Vector2 startVelocity()
-=======
         StartCoroutine(startVelocity());
     }
 
     public IEnumerator startVelocity()
->>>>>>> Stashed changes
     {
         //Mereset Posisi Bola
         rig.velocity = Vector2.zero;
@@ -49,14 +36,9 @@ public class BallController : MonoBehaviour
 
 
         //Mengacak arah bola
-<<<<<<< Updated upstream
-        float dirX = Random.Range(0, 2) == 1 ? 6f : -6f;
-        float dirY = Random.Range(-5f,5f);
-=======
         float dirX = Random.Range(0, 2) == 1 ? speed : -speed;
         float dirY = Random.Range(-5f, 5f);
->>>>>>> Stashed changes
 
-        return new Vector2(dirX,dirY);
+        rig.velocity = new Vector2(dirX, dirY);
     }
 }

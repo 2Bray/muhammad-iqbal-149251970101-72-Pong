@@ -7,6 +7,7 @@ public class PaddleController : MonoBehaviour
     private int speed;
     [SerializeField] private KeyCode upKey;
     [SerializeField] private KeyCode downKey;
+    [SerializeField] private Color hitColor;
     private Rigidbody2D rig;
 
     // Start is called before the first frame update
@@ -37,5 +38,21 @@ public class PaddleController : MonoBehaviour
     {
         if (movement != Vector2.zero) Debug.Log(name + " : " + movement);
         rig.velocity = movement;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.name == "Ball")
+        {
+            //Mengubah Warna Saat Terkena Bola
+            StartCoroutine(changeColor());
+        }
+    }
+
+    private IEnumerator changeColor()
+    {
+        GetComponent<SpriteRenderer>().color = hitColor;
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
