@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour
 {
     [SerializeField] Text readyText;
+
+    private SpriteRenderer sr;
     private Rigidbody2D rig;
     private int speed;
 
@@ -14,15 +16,18 @@ public class BallController : MonoBehaviour
     {
         speed = OptionStaticScript.GetBallSpeed();
 
+        sr = GetComponent<SpriteRenderer>();
         rig = GetComponent<Rigidbody2D>();
         StartCoroutine(startVelocity());
     }
 
     public IEnumerator startVelocity()
     {
-        //Mereset Posisi Bola
+        //Mereset Bola
         rig.velocity = Vector2.zero;
         transform.position = new Vector3(0, 0, transform.position.z);
+
+        sr.color = Color.white;
 
         //Hitung Mundur
         readyText.gameObject.SetActive(true);
@@ -40,5 +45,20 @@ public class BallController : MonoBehaviour
         float dirY = Random.Range(-5f, 5f);
 
         rig.velocity = new Vector2(dirX, dirY);
+    }
+
+    public void ActivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
+    }
+
+    public void ActivatePUInvisible(Color color)
+    {
+        sr.color = color;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        sr.color = Color.white;
     }
 }

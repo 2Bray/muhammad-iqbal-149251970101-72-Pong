@@ -59,7 +59,7 @@ public class MainMenuController : MonoBehaviour
 
     public void PaddleSpeed(float value)
     {
-        //Untuk Mengatur Kecepatan Bola. Berada pada option
+        //Untuk Mengatur Kecepatan Paddle. Berada pada option
         //Fungsi ini dieksekusi slider
 
         //value float dapat diyakini adalah nilai int
