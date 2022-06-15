@@ -12,7 +12,7 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField]private List<GameObject> powerUpTemplateList;
     private List<PowerUp> powerUpList;
 
-    [SerializeField] private int spawnInterval;
+    public int spawnInterval;
     private float timer;
 
     private void Start()

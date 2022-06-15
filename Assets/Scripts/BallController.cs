@@ -14,7 +14,7 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = OptionStaticScript.GetBallSpeed();
+        speed = OptionStaticScript.Instance.GetBallSpeed();
 
         sr = GetComponent<SpriteRenderer>();
         rig = GetComponent<Rigidbody2D>();

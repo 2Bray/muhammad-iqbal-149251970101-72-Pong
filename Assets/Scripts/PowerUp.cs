@@ -20,10 +20,10 @@ public abstract class PowerUp : MonoBehaviour
         //Menghapus Power Up Jika Tidak Juga Terkena Bola Dalam 20sec
         timer += Time.deltaTime;
 
-        if (timer > 20)
+        if (timer > manager.spawnInterval * 2)
         {
             manager.RemovePowerUp(this);
-            timer -= 20;
+            timer -= manager.spawnInterval * 2;
         }
     }
 

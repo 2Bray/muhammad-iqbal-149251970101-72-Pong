@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class OptionStaticScript
+public class OptionStaticScript
 {
     //script static untuk menyimpan nilai dari 1 scene ke scene yang lain
+
+
+    //Singleton
+    private static OptionStaticScript instance = null;
+    public static OptionStaticScript Instance
+    {
+        get => instance ?? new OptionStaticScript();
+    }
 
     private static int ballSpeed = 4;
     private static int paddleSpeed = 4;
 
-    public static void SetBallSpeed(int v) => ballSpeed = v;
-    public static void SetPaddleSpeed(int v) => paddleSpeed = v;
+    public void SetBallSpeed(int v) => ballSpeed = v;
+    public void SetPaddleSpeed(int v) => paddleSpeed = v;
 
-    public static int GetBallSpeed() => ballSpeed;
-    public static int GetPaddleSpeed() => paddleSpeed;
+    public int GetBallSpeed() => ballSpeed;
+    public int GetPaddleSpeed() => paddleSpeed;
 }

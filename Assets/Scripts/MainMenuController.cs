@@ -20,12 +20,12 @@ public class MainMenuController : MonoBehaviour
         //Setup untuk option sesuai dengan terakhir kali di setting.
         //Jika belum di setting, Nilai default diberikan 4
 
-        int ballSpeed = OptionStaticScript.GetBallSpeed();
+        int ballSpeed = OptionStaticScript.Instance.GetBallSpeed();
         ballSlider.value = ballSpeed;
         ballValue.text = ballSpeed.ToString();
         ballFill.color = dificultColor[ballSpeed - 4];
 
-        int paddleSpeed = OptionStaticScript.GetPaddleSpeed();
+        int paddleSpeed = OptionStaticScript.Instance.GetPaddleSpeed();
         paddleSlider.value = paddleSpeed;
         paddleValue.text = paddleSpeed.ToString();
         paddleFill.color = dificultColor[paddleSpeed - 4];
@@ -43,6 +43,12 @@ public class MainMenuController : MonoBehaviour
         optPanel.SetActive(!optPanel.activeInHierarchy);
     }
 
+    public void OpenCredit()
+    {
+        //Pergi ke scene credit
+        SceneManager.LoadScene("Credit");
+    }
+
     public void BallSpeed(float value)
     {
         //Untuk Mengatur Kecepatan Bola. Berada pada option
@@ -51,7 +57,7 @@ public class MainMenuController : MonoBehaviour
         //value float dapat diyakini adalah nilai int
         //karena setting whole numbers pada slider di centang
         int speed = (int)value;
-        OptionStaticScript.SetBallSpeed(speed);
+        OptionStaticScript.Instance.SetBallSpeed(speed);
 
         ballValue.text = speed.ToString();
         ballFill.color = dificultColor[speed - 4];
@@ -65,7 +71,7 @@ public class MainMenuController : MonoBehaviour
         //value float dapat diyakini adalah nilai int
         //karena setting whole numbers pada slider di centang
         int speed = (int)value;
-        OptionStaticScript.SetPaddleSpeed(speed);
+        OptionStaticScript.Instance.SetPaddleSpeed(speed);
 
         paddleValue.text = speed.ToString();
         paddleFill.color = dificultColor[speed - 4];
